@@ -1,0 +1,61 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CUA}{Creación de cuenta de usuario de paciente}
+{
+		El usuario podrá crear su cuenta de usuario mediante el llenado de un formulario.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Cliente}
+		\UCitem{Propósito}{El actor puede acceder a su cuenta de usuario y agendar citas}
+		\UCitem{Entradas}{
+		-	Nombre: Cadena de caracteres.
+		
+		-	Apellido paterno: Cadena de caracteres.
+		
+		-	Apellido materno: Cadena de caracteres.
+		
+		-	Correo: cadena de caracteres con el formato example@dominio.com
+		
+		-	Contraseña: Cadena de caracteres (mínimo 6 y máximo 20).
+		
+		-	Teléfono: Cadena de caracteres.
+		}
+		\UCitem{origen}{Todas las entradas del teclado}
+		\UCitem{Salidas}{
+					Mensaje de confirmación: “Tu cuenta se ha creado de forma correcta.”
+}
+		\UCitem{Destino}{Pantalla del actor}
+		\UCitem{Precondiciones}{
+		-	El correo no debe estar registrado anteriormente.
+		
+		-	La contraseña debe tener al menos 6 caracteres y menos de 20.
+		
+		-	Conexión a internet.
+		}
+		\UCitem{Postcondiciones}{
+		-	Se crea la cuenta de usuario.
+		
+		-	Se ingresa un nuevo registro de usuario en el sistema.
+		}
+		\UCitem{Errores:}{
+					-	Si el correo ya está registrado se debe informar al usuario.
+				
+					-	Si la contraseña es menor a 6 caracteres o mayor a 20 se debe informar al usuario.
+					
+					-	Si el teléfono un número de dígitos diferente de 10 se debe informar al usuario.
+}
+		\UCitem{Tipo de ejecución}{Primario}
+		\UCitem{Autor}{Sebastián Saldaña Campos}
+		\UCitem{Revisó}{Gabriela Moreno González}
+	\end{UseCase}
+		
+%-------------------------------------- TERMINA descripción del caso de uso.

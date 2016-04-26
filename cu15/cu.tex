@@ -1,0 +1,84 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU15}{Generar tratamiento}
+{
+		Al terminar la consulta el médico le proporcionará al paciente, de manera impresa, un tratamiento que contiene las indicaciones y/o receta médica para tratar su condición. El tratamiento también se almacenará en el expediente del paciente.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Médico}
+		\UCitem{Propósito}{El paciente conozca las acciones que debe tomar para tratar su enfermedad, y sea capaz de comprar los medicamentos necesarios. Se lleve un registro en el expediente de todos los tratamientos que haya llevado el paciente.}
+		\UCitem{Entradas}{
+		-	Correo electrónico del paciente: String.
+		
+		-	Tratamiento indicado: String
+		}
+		\UCitem{origen}{Teclado.}
+		\UCitem{Salidas}{
+					-	Mensaje de confirmación: “Tratamiento asignado exitosamente”.
+					
+					-	Copia para paciente: 
+					
+						- Nombre del Médico
+						
+						- Nombre del paciente
+						
+						- Fecha
+						
+						- Tratamiento indicado por el médico
+						
+						- Marcador de posición de firma del médico
+						
+						- Cédula profesional del médico
+}
+		\UCitem{Destino}{
+		-	Mensaje de Confirmación: mensaje en pantalla
+		
+		-	Copia para paciente: Archivo PDF listo para imprimir
+}
+		\UCitem{Precondiciones}{
+					-	El médico debe haber iniciado sesión en el sistema
+					
+					-	El paciente debe de estar registrado en el sistema
+					
+					-	El paciente debe contar con un expediente 
+		}
+		\UCitem{Postcondiciones}{
+					-	El paciente contará con una copia del tratamiento indicado para su consulta
+					
+					-	El paciente tendrá un comprobante que le permitirá comprar los medicamentos indicados en el tratamiento
+					
+					-	Se tratamiento será registrado en el expediente del paciente
+		}
+		\UCitem{Errores}{
+					-	El actor introduce información incorrecta
+					
+					-	El paciente no está registrado en el sistema
+					
+					-	El paciente no cuenta con un expediente
+}
+		\UCitem{Tipo de ejecución}{Secundaria viene de CU0}
+		\UCitem{Autor}{Sebastián Saldaña Campos}
+		\UCitem{Revisó}{Erick Rubén Reynoso Rodríguez}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor solicita generar un tratamiento dando click en la opción “Generar Tratamiento”
+	\UCpaso El sistema solicita el correo electrónico con el que el paciente creó su cuenta de usuario
+	\UCpaso El actor introduce el correo electrónico del paciente
+	\UCpaso El actor envía el correo electrónico del paciente al sistema presionando el botón “Buscar”
+	\UCpaso El sistema verifica la existencia del usuario buscando su correo electrónico 
+	\UCpaso El sistema solicita el tratamiento que se determinó para el paciente
+	\UCpaso El sistema registra el tratamiento en el expediente 
+	\UCpaso Fin
+\end{UCtrayectoria}
+
+%-------------------------------------- TERMINA descripción del caso de uso.

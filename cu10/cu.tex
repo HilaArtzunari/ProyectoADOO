@@ -1,0 +1,110 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU10}{Dar de alta paciente}
+{
+		Cuando un paciente tome una consulta por primera vez, el médico registra al paciente en el sistema proporcionando sus datos. El sistema guardará sus datos.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Médico}
+		\UCitem{Propósito}{Que el médico que lo atienda pueda confirmar las citas que se han llevado a cabo con dicho paciente, como el crear, modificar el expediente}
+		\UCitem{Entradas}{
+		-	Nombre: String
+		
+		-	Apellido Paterno: String
+				
+				-	Apellido Materno: String
+				
+				-	Fecha de Nacimiento:
+				
+				-	Día: int
+				
+				-	Mes: int
+				
+				-	Año: int
+				
+				-	CURP: String de 18 Digitos
+				
+				-	Dirección:
+				
+				-	Calle: String
+				
+				-	No Exterior: int
+				
+				-	No Interior: int
+				
+				-	Colonia: String
+				
+				-	Codigo Postal: int de 5 Digitos
+				
+				-	Delegación o Municipio: String
+				
+				-	Estado: String
+				
+				-	País: String
+				
+				-	Teléfono: 
+				
+				-	Telefono: String
+				
+				-	Tipo: String
+				
+				-	Teléfono de Emergencia:
+				
+				-	Telefono: String
+				
+				-	Tipo: String
+				
+				-	Dueño: String
+		}
+		\UCitem{origen}{Teclado.}
+		\UCitem{Salidas}{
+					-	Mensaje: Registro Exitoso
+}
+		\UCitem{Destino}{Mensaje en Pantalla}
+		\UCitem{Precondiciones}{
+					-	Que no esté registrado otro paciente con la misma CURP
+		}
+		\UCitem{Postcondiciones}{
+					-	Agendar Cita
+					
+					-	Completar Cita
+					
+					-	Crear Expediente
+					
+					-	Modificar Expediente
+					
+					-	Eliminar Paciente
+		}
+		\UCitem{Errores}{
+					-	El médico introduce datos incorrectos
+					
+					-	No hay conexión con la base de datos
+					
+					-	Que ya esté registrado otro paciente con el mismo CURP
+}
+		\UCitem{Tipo de ejecución}{Secundario, viene de CU0: Login}
+		\UCitem{Autor}{Erick Rubén Reynoso Rodríguez}
+		\UCitem{Revisó}{Sebastián Saldaña Campos}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor solicita registrar paciente dando click a “registrar paciente”
+	\UCpaso El sistema solicita los datos del paciente a registrar mostrando el formulario “Registrar Paciente”
+	\UCpaso El actor introduce los datos del paciente
+	\UCpaso El actor presiona click en “Registrar”
+	\UCpaso El sistema verifica que no esté registrado el CURP con otro paciente
+	\UCpaso El sistema registra al paciente
+	\UCpaso El sistema notifica el resultado de la operacion mostrando el mensaje “Registro Exitoso”
+	\UCpaso Fin
+\end{UCtrayectoria}
+
+%-------------------------------------- TERMINA descripción del caso de uso.

@@ -1,0 +1,78 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU5}{Consultar cita}
+{
+		La caja podrá consultar las citas que se encuentran agendadas para un día determinado para así poder solicitar el pago al cliente en caso de que éste haya llegado a su cita.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{Consultar las citas permite llevar un control de aquellas que si se encuentran dadas de alta en el sistema, para que aquellas que no y el cliente desea pagar se le solicite primer registrar su cita.}
+		\UCitem{Entradas}{
+				- Fecha de la cita: cadena de carácteres con el formato YY/MM/DD
+				
+				- Hora de la cita: cadena de carácteres con el formato HH:MM
+		}
+		\UCitem{origen}{Teclado: Fecha y hora de la cita.}
+		\UCitem{Salidas}{
+					- La información de la fecha, hora, quién solicitó la cita, en qué consultorio y el doctor que atenderá dicha cita.
+					
+					- Un botón de 'Registrar pago de cita' en caso no haberse pagado aún, o bien un botón de 'Aceptar' en caso de que la cita ya haya sido pagada.
+}
+		\UCitem{Destino}{El panel actual donde se pidió la consulta de la cita.}
+		\UCitem{Precondiciones}{
+					- La fecha de la cita debe estar escrita con el formato YY/MM/DD
+					
+					- La hora de la cita debe estar escrita con el formato HH:MM
+		}
+		\UCitem{Postcondiciones}{
+					- Se consulta la base de datos.
+					
+					- Se cargan los datos actuales.
+					}
+		\UCitem{Errores}{
+					-	La fecha no se ingresa con el formato YY/MM/DD
+					
+					- La hora no se ingresa con el formato HH:MM
+}
+		\UCitem{Tipo de ejecución}{Secundario, viene de CU0: Login}
+		\UCitem{Autor}{Gabriela Moreno González}
+		\UCitem{Revisó}{Saldaña Campos Sebastián}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor ingresa la fecha de la cita.
+	\UCpaso El actor ingresa la hora de inicio de la cita. 
+	\UCpaso El actor solicita al sistema la información de la cita. \Trayref{A} \Trayref{B}
+	\UCpaso El sistema busca en la base de datos la hora y la fecha solicitada. \Trayref{C}
+	\UCpaso El sistema muestra la información de la cita.
+	\UCpaso El actor oprime el botón 'Aceptar'.
+	\UCpaso Fin
+\end{UCtrayectoria}
+		
+\begin{UCtrayectoriaA}{A}{La fecha está escrita con un formato incorrecto.}
+			\UCpaso El sistema muestra un mensaje 'Asegúrate de que la fecha esté escrita en formato YY/MM/DD'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{B}{La hora está escrita con un formato incorrecto.}
+			\UCpaso El sistema muestra un mensaje 'Asegúrate de que la hora esté escrita con formato HH:MM.'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{C}{La fecha y hora especificados no existen en la base de datos.}
+			\UCpaso El sistema muestra un mensaje 'Fecha y hora ingresados no poseen una cita.'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+%-------------------------------------- TERMINA descripción del caso de uso.

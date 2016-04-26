@@ -1,0 +1,74 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU6}{Registrar ventas  de productos}
+{
+		La caja se encargará de registrar los pagos realizados por los clientes cuando se compre un medicamento o un servicio como consultas médicas, generación de certificados médicos o chequeos.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{El registro de pago permite hacer el corte de caja al final del día y saber cuántas entradas de dinero hubieron.}
+		\UCitem{Entradas}{
+				- Nombre de los productos comprados: cadena de carácteres-
+				- Cantidad de cada producto: número entero positivo.
+		}
+		\UCitem{origen}{Teclado: Productos comprados y la cantidad de éstos.}
+		\UCitem{Salidas}{
+					- Un mensaje “Registro de venta exitoso.”
+					
+					- Un botón de Aceptar.
+}
+		\UCitem{Destino}{El panel actual donde se registró la venta.}
+		\UCitem{Precondiciones}{
+					- Los productos ingresados deben estar registrados con anterioridad.
+					
+					- La cantidad ingresada por cada uno debe ser un número entero positivo menor o igual a la cantidad registrada del producto en el almacén.
+		}
+		\UCitem{Postcondiciones}{
+					- Se registra la venta en la base de datos.
+					
+					- Se actualiza la cantidad de productos en el stock.
+					
+					- Se vuelve a la pantalla de inicio.
+		}
+		\UCitem{Errores}{
+					-	El actor introduce un número negativo en la cantidad de producto, o bien un número superior a la cantidad en el almacén.
+					
+					- El actor coloca un nombre de producto que no está registrado.
+}
+		\UCitem{Tipo de ejecución}{Secundario, viene de CU0: Login}
+		\UCitem{Autor}{Gabriela Moreno González}
+		\UCitem{Revisó}{Erick Rubén Reynoso Rodríguez}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor ingresa el nombre del producto comprado.
+	\UCpaso El actor solicita al sistema que busque dicho producto. \Trayref{A}
+	\UCpaso El sistema encuentra dicho producto y solicita la cantidad vendida.
+	\UCpaso El actor ingresa la cantidad vendida de dicho producto y acepta. \Trayref{B}
+	\UCpaso El actor solicita la generación del ticket.
+	\UCpaso El sistema actualiza la base de datos registrando la venta.
+	\UCpaso El sistema genera el ticket.
+	\UCpaso Fin
+\end{UCtrayectoria}
+		
+\begin{UCtrayectoriaA}{A}{El nombre del producto ingresado no está registrado.}
+			\UCpaso El sistema muestra un mensaje 'El nombre del producto ingresado está mal escrito o no está registrado'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{B}{La cantidad ingresada supera a la cantidad en el almacén.}
+			\UCpaso El sistema muestra un mensaje 'La cantidad que deseas vender supera a la cantidad disponible.'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+%-------------------------------------- TERMINA descripción del caso de uso.

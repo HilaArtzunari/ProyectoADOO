@@ -1,0 +1,71 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU0}{Login}
+{
+		El usuario podrá acceder a su cuenta de usuario desde el sitio web mediante el ingreso de su correo y su contraseña.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Cliente}
+		\UCitem{Propósito}{Poder solicitar una cita}
+		\UCitem{Entradas}{
+			-	Correo: Cadena de caracteres con el formato: example@dominio.com
+			
+			-	Contraseña: Cadena de caracteres de mínimo 6 y máximo 20.
+}
+		\UCitem{origen}{Todas las entradas del teclado}
+		\UCitem{Salidas}{
+				-	Mensaje de confirmación: “Bienvenido nombreusuario”
+}
+		\UCitem{Destino}{Pantalla del actor}
+		\UCitem{Precondiciones}{
+		-	Debe existir una cuenta de usuario que tenga asignado el correo ingresado.
+		
+		-	La contraseña debe coincidir con la contraseña asignada a la cuenta de usuario a la que corresponda el correo ingresado.
+		
+		-	Conexión a internet.
+}
+		\UCitem{Postcondiciones}{
+		-	Se inicia la sesión.
+		
+		-	Se cargan los datos del usuario.
+		
+		-	Se actualiza la página principal.
+}
+		\UCitem{Errores:}{
+					-	Si el correo no está registrado se informa al usuario.
+					
+					-	Si la contraseña no coincide se informa al usuario.
+					
+					-	Si la contraseña tiene menos de 6 caracteres o más de 20 no se permite iniciar sesión.
+					
+					-	Si ya se ha iniciado sesión con esa cuenta se bloquean ambas cuentas y se solicita que pida un desbloqueo en la consultoría.
+}
+		\UCitem{Tipo de ejecución}{Primario}
+		\UCitem{Autor}{Gabriela Moreno González}
+		\UCitem{Revisó}{Sebastián Saldaña Campos.}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor ingresa su correo y su contraseña.
+	\UCpaso El actor oprime el botón de 'Iniciar sesión.'
+	\UCpaso El sistema busca los datos que correspondan al correo y a la contraseña. \Trayref{A}
+	\UCpaso El sistema muestra el mensaje de 'Bienvenido nombreactor'
+	\UCpaso Fin
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}{A}{El correo o contraseña no coinciden.}
+			\UCpaso El sistema muestra un mensaje 'Correo o contraseña incorrectos'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+		
+%-------------------------------------- TERMINA descripción del caso de uso.

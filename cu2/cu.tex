@@ -1,0 +1,59 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU2}{Consultar productos por similar}
+{
+		Cuando se requiera realizar una venta o verificar si hay en existencia algún producto, se podrá realizar una consulta por los similares del producto deseado. El sistema deberá mostrar la información de dichos productos.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{El cajero sepa si existe el producto para informarle a los clientes si hay existencia del producto que se desea comprar}
+		\UCitem{Entradas}{Nombre del Producto: Cadena de texto (20 digitos)}
+		\UCitem{origen}{Teclado: Nombre del Producto}
+		\UCitem{Salidas}{
+					Información de los productos que sean similares al producto deseado, donde se muestre:
+
+						-	Número de existencias
+
+						-	Precio
+
+						-	Descripción
+
+						-	Nombre del Producto
+
+						-	Una botón si se desea comprar el producto
+
+}
+		\UCitem{Destino}{Un panel donde se muestre la información de los productos}
+		\UCitem{Precondiciones}{Deben existir en la farmacia el producto deseado }
+		\UCitem{Postcondiciones}{Observar información acerca de los productos, Informar al cliente la información de éstos productos y diferencias entre los mismos y el deseado , Realizar la venta del producto.}
+		\UCitem{Errores}{
+					-	El actor introduce mal el ingrediente que se desea
+					
+					-	No hay conexión con la base de datos
+					
+					-	No coincida el nombre del producto con el ya registrado 
+}
+		\UCitem{Tipo de ejecución}{Secundario, viene de CU0: Login}
+		\UCitem{Autor}{Juan Moisés Martínez Vilchis.}
+		\UCitem{Revisó}{Ulises Pérez Montiel.}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor solicita realizar una búsqueda de algún producto tecleando en la barra de texto el nombre que se desea.
+	\UCpaso El sistema realiza una búsqueda en en la base de datos, en la tabla de “Medicamentos”, donde coincida el nombre ingresado con alguno ya registrado.
+	\UCpaso El sistema verifica si hay existencias el producto introducido
+	\UCpaso El sistema realiza una búsqueda con los productos similares
+	\UCpaso El sistema da a conocer el resultado, mostrando el nombre, descripción, precio y número de existencias. 
+	\UCpaso Fin
+\end{UCtrayectoria}
+		
+%-------------------------------------- TERMINA descripción del caso de uso.

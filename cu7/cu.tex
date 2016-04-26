@@ -1,0 +1,88 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU7}{Consulta expediente}
+{
+		Cuando el doctor requiere información del historial médico de su paciente, podrá consultar toda la información registrada en el expediente. El sistema se encargará de realizar la búsqueda del expediente
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Doctor}
+		\UCitem{Propósito}{Los doctores puedan consultar el expediente de sus pacientes rápidamente durante su consulta}
+		\UCitem{Entradas}{
+				-	Nombre -String 
+				
+				-	Número de seguro social (opcional)
+		}
+		\UCitem{origen}{
+				-	Nombre - Del teclado
+
+				-	Número de seguro social (opcional) - Del teclado
+}
+		\UCitem{Salidas}{
+				-	Expediente Clínico (Estructura con 4 elementos):
+				
+				1)	Ficha de identificación con los siguientes datos 
+				
+					-	Nombre - String
+					
+					-	Edad - Numero entero
+					
+					-	Sexo - String
+					
+					-	Fecha de nacimiento 
+					
+					-	Dia - Numero entero
+					
+					-	Mes - Numero entero
+					
+					-	Año - Numero entero
+					
+					-	Direccion compuesta por:
+					
+						-	Calle - String
+						
+						-	Numero - Numero entero
+						
+						-	Colonia - String
+						
+						-	Estado - String
+						
+						-	Pais - String
+					
+					-	Telefono
+					
+					-	Particular - String (Validar que sea un número de teléfono válido)
+					
+					-	Emergencia - String (Validar que sea un número de teléfono válido)
+					
+					-	Numero de seguro social 
+
+				2)	Historia clinica
+
+				3)	Nota médica
+
+				4)	Historial de consulta
+}
+		\UCitem{Destino}{El panel actual donde se registró la venta.}
+		\UCitem{Precondiciones}{
+		}
+		\UCitem{Postcondiciones}{
+		}
+		\UCitem{Errores}{
+}
+		\UCitem{Tipo de ejecución}{Secundario, viene de CU0: Login}
+		\UCitem{Autor}{Ulises Pérez Montiel}
+		\UCitem{Revisó}{Gabriela Moreno González}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+\end{UCtrayectoria}
+%-------------------------------------- TERMINA descripción del caso de uso.

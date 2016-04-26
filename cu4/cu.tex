@@ -1,0 +1,64 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU4}{Registrar pago}
+{
+		La caja se encargará de registrar los pagos de las consultas de los clientes mediante el chequeo de la existencia de dicha agendación.
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Cajero}
+		\UCitem{Propósito}{El registro de pago permite que el cliente pueda pasar a su cita a la hora acordada.}
+		\UCitem{Entradas}{
+				- Pago: número de coma flotante.
+		}
+		\UCitem{origen}{Teclado: Pago.}
+		\UCitem{Salidas}{
+					- Un mensaje “Registro de pago de ficha exitoso.”
+					
+					- Un botón de Aceptar.
+}
+		\UCitem{Destino}{El panel actual donde se registró el pago de la cita.}
+		\UCitem{Precondiciones}{
+					- El pago debe ser un número positivo.
+		}
+		\UCitem{Postcondiciones}{
+					- Se registra el pago de ficha en la base de datos.
+					
+					- Se actualiza la cuenta del cliente.
+					
+					- Se actualiza la base de datos.
+		}
+		\UCitem{Errores}{
+					-	El actor introduce un número negativo en el pago.
+}
+		\UCitem{Tipo de ejecución}{Terciario, viene de CU5: Consultar cita}
+		\UCitem{Autor}{Gabriela Moreno González}
+		\UCitem{Revisó}{Juan Moisés Martínez Vilchis}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor ingresa la cantidad pagada por el cliente.
+	\UCpaso El actor solicita al sistema que registre dicho pago. \Trayref{A}
+	\UCpaso El sistema registra la cantidad pagada.
+	\UCpaso El sistema muestra un mensaje 'Registro de pago de ficha exitoso.' 
+	\UCpaso El sistema actualiza la base de datos registrando el pago.
+	\UCpaso El sistema genera la ficha.
+	\UCpaso El actor entrega el pago y el cambio al cliente.
+	\UCpaso Fin
+\end{UCtrayectoria}
+		
+\begin{UCtrayectoriaA}{A}{El pago ingresado es un número negativo.}
+			\UCpaso El sistema muestra un mensaje 'El pago ingresado no puede ser un número negativo'
+			\UCpaso El actor oprime el botón de Aceptar.
+			\UCpaso[] Termina el caso de uso.
+\end{UCtrayectoriaA}
+
+%-------------------------------------- TERMINA descripción del caso de uso.

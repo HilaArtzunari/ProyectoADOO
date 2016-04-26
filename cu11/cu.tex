@@ -1,0 +1,62 @@
+% \IUref{IUAdmPS}{Administrar Planta de Selección}
+% \IUref{IUModPS}{Modificar Planta de Selección}
+% \IUref{IUEliPS}{Eliminar Planta de Selección}
+
+% 
+
+
+% Copie este bloque por cada caso de uso:
+%-------------------------------------- COMIENZA descripción del caso de uso.
+
+%\begin{UseCase}[archivo de imágen]{UCX}{Nombre del Caso de uso}{
+	\begin{UseCase}{CU11}{Dar de alta un familiar}
+{
+		Cuando un paciente se tenga registrado se puede dar la opción de registrar a un familiar de dicho paciente
+}
+		\UCitem{Versión}{0.1}
+		\UCitem{Actor}{Médico}
+		\UCitem{Propósito}{Los pacientes que tengan a sus familiares registrados les da un mejor expediente médico, por razones hereditarias}
+		\UCitem{Entradas}{
+		-	Nombre
+		
+		-	Apellido Paterno
+		
+		-	Apellido Materno
+		
+		-	CURP
+		
+		-	Enfermedades
+		}
+		\UCitem{origen}{Teclado.}
+		\UCitem{Salidas}{
+					-	Mensaje: Registro Exitoso
+}
+		\UCitem{Destino}{Mensaje en Pantalla}
+		\UCitem{Precondiciones}{
+					-	Tener un paciente registrado
+
+					-	No tener el CURP ya relacionado al paciente
+		}
+		\UCitem{Postcondiciones}{
+					-	Agregar enfermedades hereditarias
+		}
+		\UCitem{Errores}{
+					-	El CURP ya esté relacionado 
+}
+		\UCitem{Tipo de ejecución}{Secundaria viene de CU15}
+		\UCitem{Autor}{Erick Rubén Reynoso Rodríguez}
+		\UCitem{Revisó}{Ulises Pérez Montiel}
+	\end{UseCase}
+	
+\begin{UCtrayectoria}{Principal}
+	\UCpaso	El actor selecciona agregar datos familiares
+	\UCpaso El sistema muestra formulario “agregar familiar”
+	\UCpaso El actor introduce los datos del familiar
+	\UCpaso El actor le da click en agregar
+	\UCpaso El sistema verifica que el CURP no tenga una “relación familiar” con el paciente de la cita seleccionada
+	\UCpaso El sistema registra al familiar
+	\UCpaso El sistema muestra un mensaje de registro exitoso
+	\UCpaso Fin
+\end{UCtrayectoria}
+
+%-------------------------------------- TERMINA descripción del caso de uso.
