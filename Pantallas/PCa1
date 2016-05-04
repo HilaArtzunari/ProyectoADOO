@@ -1,0 +1,26 @@
+\subsection{PCa1 Pantalla de cajero para búqueda}
+
+\subsubsection{Objetivo}
+	 Control de búsquedas para poder viualizar los resultados depuespues de una petición por el cajero.
+
+\subsubsection{Diseño}
+	Esta pantalla aparece al inicio de sesión del cajero. Para ingresar al mismo un nombre de producto o ingrediente activo para realizar la búsqueda. 
+
+\IUfig[.5]{gui/Login}{PCa1}{Pantalla del cajero para búsqueda}
+
+\subsubsection{Salidas}
+
+	Resultado de la búsqueda deseada.
+
+\subsubsection{Entradas}
+Nombre del producto / Ingrediente activo a buscar.
+
+\subsubsection{Comandos}
+\begin{itemize}
+	\item \IUbutton{Buscar}: Realiza la operación para obtener el resultado deseado.
+\end{itemize}
+
+\subsubsection{Mensajes}
+	\begin{Citemize}
+		\item {\bf MSG1} No se encuentra registrado ningún producto ni ingrediente activo con ese nombre.
+	\end{Citemize}
