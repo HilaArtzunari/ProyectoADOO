@@ -1,0 +1,67 @@
+CREATE DATABASE sac;
+use sac;
+CREATE TABLE `usuario` (
+  `idusuario` int(10) unsigned NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `nombreusuario` varchar(255) NOT NULL,
+  `telefono` varchar(10) DEFAULT NULL,
+  `direccion` text DEFAULT NULL,
+  `tipo` int(1) NOT NULL,
+  PRIMARY KEY (`idusuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `medico` (
+  `idmedico` int(10) unsigned NOT NULL,
+  `fk_idusuario` int(10) unsigned NOT NULL,
+  `cedula` int(10) NOT NULL,
+  PRIMARY KEY (`idmedico`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `horario` (
+  `idhorario` int(10) unsigned NOT NULL,
+  `dia` varchar(10) NOT NULL,
+  `horaentrada` time NOT NULL,
+  `horasalida` time NOT NULL,
+  PRIMARY KEY (`idhorario`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `horariomedico` (
+  `idhorariomedico` int(10) unsigned NOT NULL,
+  `fk_idmedico` int(10) unsigned NOT NULL,
+  `fk_idhorario` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`idhorariomedico`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `horarioocupado` (
+  `idhorarioocupado` int(10) unsigned NOT NULL,
+  `fk_idmedico` int(10) unsigned NOT NULL,
+  `hora` time NOT NULL,
+  `fechacita` date NOT NULL,
+  PRIMARY KEY (`idhorarioocupado`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `cita` (
+  `idcita` int(10) unsigned NOT NULL,
+  `fk_idhorarioocupado` int(10) unsigned NOT NULL,
+  `idorigen` int(10) unsigned NOT NULL,
+  `pagada` bit NOT NULL,
+  `nombrepaciente` varchar(255) NOT NULL,
+  PRIMARY KEY (`idcita`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE medico
+add CONSTRAINT `medico_idfk_1` FOREIGN KEY (`fk_idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE horariomedico
+add CONSTRAINT `horariomedico_idfk_1` FOREIGN KEY (`fk_idmedico`) REFERENCES `medico` (`idmedico`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE horariomedico
+add CONSTRAINT `horariomedico_idfk_2` FOREIGN KEY (`fk_idhorario`) REFERENCES `horario` (`idhorario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE horarioocupado
+add CONSTRAINT `horarioocupado_idfk_1` FOREIGN KEY (`fk_idmedico`) REFERENCES `medico` (`idmedico`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE cita
+add CONSTRAINT `cita_idfk_1` FOREIGN KEY (`fk_idhorarioocupado`) REFERENCES `horarioocupado` (`idhorarioocupado`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -1,0 +1,2 @@
+cd Program Files (x86)\MySQL\MySQL Server 5.6\bin
+mysqldump.exe -u root -p sac > C:/backup_mysql.sql
