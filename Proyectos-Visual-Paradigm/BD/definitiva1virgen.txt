@@ -4,8 +4,8 @@ CREATE TABLE `usuario` (
   `idcorreo` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
   `nombreusuario` varchar(255) NOT NULL,
-  `telefono` varchar(10) DEFAULT NULL,
   `direccion` varchar(255) DEFAULT NULL,
+  `telefono` varchar(12) DEFAULT NULL,
   `tipo` int(1) NOT NULL,
   PRIMARY KEY (`idcorreo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -28,6 +28,7 @@ CREATE TABLE `horariomedico` (
   `idhorariomedico` int(10) unsigned NOT NULL,
   `fk_idcedula` int(10) unsigned NOT NULL,
   `fk_idhorario` int(10) unsigned NOT NULL,
+  `consultorio` int(2) unsigned NOT NULL,
   PRIMARY KEY (`idhorariomedico`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -42,7 +43,7 @@ CREATE TABLE `horarioocupado` (
 CREATE TABLE `cita` (
   `idcita` int(10) unsigned NOT NULL,
   `fk_idhorarioocupado` int(10) unsigned NOT NULL,
-  `idorigen` int(10) unsigned NOT NULL,
+  `idorigen` varchar(50) NOT NULL,
   `pagada` bit NOT NULL,
   `nombrepaciente` varchar(255) NOT NULL,
   PRIMARY KEY (`idcita`)
@@ -198,5 +199,3 @@ add CONSTRAINT `familiar_idfk_1` FOREIGN KEY (`fk_idunico`) REFERENCES `expedien
 
 ALTER TABLE antecedentefam
 add CONSTRAINT `antecedentefam_idfk_1` FOREIGN KEY (`fk_idfamiliar`) REFERENCES `familiar` (`idfamiliar`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-
